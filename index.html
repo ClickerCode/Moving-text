@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        text {
+            font-family: helvetica;
+            font-size: 250%;
+        }
+    </style>
+</head>
+<body>
+    <svg width="100%" height="50">
+        <rect x="0" y="0" width="100%" height="100%" fill="lightgray" />
+        <text id="txtSølve" x="0" y="36" fill="blue">Sølve</text>
+    </svg>  
+    <script>
+        var objects = [
+        {
+            speed: 1,
+            id: 'txtSølve',
+            angle: 0,
+            x: 0
+        }];
+        setInterval(move, 30);
+            
+        function move() {
+            for (var i in objects) {
+                var object = objects[i];
+                var txt = document.getElementById(object.id);
+                object.angle = (object.angle + 1) % 360;
+                object.x = Math.round(40 + 40 * Math.sin(Math.PI * object.angle / 180));
+                txt.setAttribute('x', object.x + '%');
+            }
+        }
+    </script>
+</body>
+</html>
